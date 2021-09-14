@@ -2361,6 +2361,11 @@ responselike@^1.0.2:
   dependencies:
     lowercase-keys "^1.0.0"
 
+rfr@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/rfr/-/rfr-1.2.3.tgz#e7bb719337ede977091faf12eac8b6cd2dba9011"
+  integrity sha1-57txkzft6XcJH68S6si2zS26kBE=
+
 rimraf@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
