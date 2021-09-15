@@ -6,6 +6,8 @@ class Command {
      * @param {string} commandData.description A description of what the command do.
      * @param {string} commandData.category The command category belongs to.
      * @param {number} commandData.cooldown The time that the user has to wait before calling the command again
+     * @param {import("discord.js").PermissionFlags[]} commandData.permissions
+     * @param {boolean} commandData.devOnly
      */
     constructor(commandData) {
         this.help = {
@@ -16,7 +18,9 @@ class Command {
 
         this.config = {
             cooldownTime: commandData.cooldownTime || 500,
-            aliases: commandData.aliases
+            aliases: commandData.aliases,
+            permissions: commandData.permissions,
+            devOnly: commandData.devOnly,
         }
 
         this.cooldown = new Set();
@@ -35,6 +39,22 @@ class Command {
         setTimeout(() => {
             this.cooldown.delete(userId);
         }, this.config.cooldownTime);
+    }
+
+    /**
+     * Checks if a member of a guild has permission to call this command.
+     * @param {import("discord.js").GuildMember} member
+     * @returns {boolean}
+     */
+    checkPermissions = (member) => {
+        if (this.config.devOnly) {
+            return member.user.id === process.env.DEV;
+        }
+        if (!member) return;
+        if (!this.config.permissions || !this.config.permissions.length) {
+            return true;
+        }
+        return member.permissions.has(this.config.permissions);
     }
 }
 
