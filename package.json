@@ -2,17 +2,21 @@
   "name": "music-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config index.js"
+    "dev": "nodemon -r dotenv/config src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.1.0"
+    "discord.js": "^13.1.0",
+    "rfr": "^1.2.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "nodemon": "^2.0.12"
